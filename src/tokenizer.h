@@ -1,6 +1,8 @@
 #ifndef _TOKENIZER_
 #define _TOKENIZER_
 
+
+
 //null char is a string terminator
 
 /* Return true (non-zero) if c is a whitespace characer
