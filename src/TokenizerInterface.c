@@ -4,7 +4,7 @@
 //
 //  Created by Osvaldo Asael Nevarez  on 6/28/20.
 //
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "tokenizer.h"
 
@@ -18,7 +18,10 @@ int main(){
     
     printf("\n");
     
+    char tokens[] = {'d', 'e', 'a'};
+    char *pt = tokens;
     
+    print_tokens(pt);
     
     
     
