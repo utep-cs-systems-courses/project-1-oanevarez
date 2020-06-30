@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tokenizer.h"
+#ifndef _TOKENIZER_
+#define _TOKENIZER_
 
 //null char is a string terminator
 
@@ -113,12 +115,6 @@ int count_words(char *str){
 /* Returns a fresly allocated new zero-terminated string
    containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len);
-
-
-
-
-
-
 
 
 

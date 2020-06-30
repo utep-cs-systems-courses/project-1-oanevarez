@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "tokenizer.h"
+#include "tokenizer.c"
+
 
 int main(){
     
@@ -19,12 +21,11 @@ int main(){
     
     printf("\n");
     
-    char tokens[] = {'d', 'e', 'a'};
-    char *pt = tokens;
+    char try = ' ';
+    int tryse =0;
     
-    print_tokens(pt);
-    
-    
+    non_space_char(try);
+    printf("%d\n" , tryse);
     
     
     
@@ -37,3 +38,6 @@ int main(){
     
     return 0;
 }
+
+
+
