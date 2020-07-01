@@ -8,8 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tokenizer.h"
-#ifndef _TOKENIZER_
-#define _TOKENIZER_
+
 
 //null char is a string terminator
 
@@ -94,7 +93,7 @@ char *word_terminator(char *word){
 int count_words(char *str){
     
     int totalNum=0;
-    char theWord ='w'; // w means word
+   
     
     while(non_space_char(*str)){
         
@@ -114,11 +113,19 @@ int count_words(char *str){
 
 /* Returns a fresly allocated new zero-terminated string
    containing <len> chars from <inStr> */
-char *copy_str(char *inStr, short len);
-
-
-
-
+char *copy_str(char *inStr, short len){
+    
+    char *str = malloc(sizeof(char)*len);
+    
+    int i=0;
+    while(i<(len -1)){
+        str[i] = inStr[i];
+        i++;
+    }
+    str[len] = '\0';
+    
+    return str;
+}
 
 
 /* Returns a freshly allocated zero-terminated vector of freshly allocated
@@ -130,23 +137,47 @@ char *copy_str(char *inStr, short len);
      tokens[2] = "string"
      tokens[3] = 0
 */
-char **tokenize(char* str);
-
-
-
-
-
-
-
-
-
-
-
-
+char **tokenize(char* str){
+    
+    int len = count_words(str);
+    int index =0;
+    char *split =str;
+    
+    char **tokens = malloc(sizeof(char*)*len+1);
+    
+    while(*tokens){
+        split = word_start(split);
+        
+        tokens[index] =copy_str(split, len);
+        
+        split = word_terminator(split);
+        
+        index++;
+    }
+    
+    tokens[len] = 0;
+    
+    return tokens;
+    
+}
 
 
 /* Prints all tokens. */
-void print_tokens(char **tokens);
+void print_tokens(char **tokens){
+    
+//    int i=0;
+//    while(tokens[i] != NULL){
+//        printf("%s\n", tokens[i]);
+//        i++;
+//    }
+    
+    while (*tokens){
+        printf("%s", *tokens);
+        tokens++;
+    }
+    
+    printf("\n");
+}
 
 
 
@@ -162,4 +193,4 @@ void free_tokens(char **tokens){
 }
 
 
-#endif
+
