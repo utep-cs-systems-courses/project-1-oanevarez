@@ -51,8 +51,6 @@ int non_space_char(char c){
 }
 
 
-
-
 /* Returns a pointer to the first character of the next
    space-separated word in zero-terminated str.  Return a zero pointer if
    str does not contain any words. */
@@ -141,18 +139,17 @@ char **tokenize(char* str){
     
     int len = count_words(str);
     int index =0;
-    char *split =str;
+    char *start =word_start(str);
+    char *end = word_terminator(str);
     
     char **tokens = malloc(sizeof(char*)*len+1);
     
     while(*tokens){
-        split = word_start(split);
-        
-        tokens[index] =copy_str(split, len);
-        
-        split = word_terminator(split);
-        
+
+        tokens[index] =copy_str(start, (end-start));
         index++;
+        start =word_start(end);
+        end = word_terminator(start);
     }
     
     tokens[len] = 0;
@@ -178,8 +175,6 @@ void print_tokens(char **tokens){
     
     printf("\n");
 }
-
-
 
 
 

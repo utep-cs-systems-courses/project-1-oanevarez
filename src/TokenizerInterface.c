@@ -11,21 +11,26 @@
 #include "tokenizer.c"
 
 
+
+#define SIZE 100
+
+
 int main(){
     
-    char str [1000];
+    char str [SIZE];
     
     printf("Please enter a sentance to tokenize... I will echo\n");
-    fgets(str, 1000, stdin);
+    fgets(str, SIZE, stdin);
     printf("Echoing ... \n %s\n", str);
     
     printf("\n");
     
-    char try = ' ';
-    int tryse =0;
     
-    non_space_char(try);
-    printf("%d\n" , tryse);
+    char **theTokens;
+    
+    theTokens = tokenize(str);
+    print_tokens(theTokens);
+    
     
     
     
@@ -38,6 +43,4 @@ int main(){
     
     return 0;
 }
-
-
 
